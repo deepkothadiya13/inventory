@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from customers import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/reviews/$', views.customers_review),
+    url(r'^api/reviews/(?P<pk>[0-9]+)$', views.customers_detail_update),
+    url(r'^api/search/(?P<search>[A-za-z0-9]+)$', views.review_search),
 ]
